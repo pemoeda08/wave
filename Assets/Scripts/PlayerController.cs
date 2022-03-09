@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip itemSound;
     public AudioClip deathSound;
 
+    private bool isMouseUp = true;
+
+
     Vector3 startPos;
     bool isDead = false;
 
@@ -46,15 +49,23 @@ public class PlayerController : MonoBehaviour
         newPos.x += delta * Mathf.Sin(Time.time * lrSpeed);
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
 
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0) && isMouseUp)
         {
-            isBoosted = true;
+            isBoosted = !isBoosted;
+            isMouseUp = false;
+        }
+        else if (!Input.GetMouseButton(0) && !isMouseUp) {
+            isMouseUp = true;
+        }
+        // else if(!Input.GetMouseButton(0))
+        // {
+        //     isBoosted = false;
+        // }
+
+        if (isBoosted) {
             rb.AddForce(transform.up * upSpeed);
         }
-        else if(!Input.GetMouseButton(0))
-        {
-            isBoosted = false;
-        }
+
     }
 
     // Audio delay fix
