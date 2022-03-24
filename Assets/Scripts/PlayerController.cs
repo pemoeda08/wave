@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void ItemGetEvent();
+    public event ItemGetEvent OnItemGetEvent;
+
+    public delegate void DeathEvent();
+    public event DeathEvent OnDeath;
+
     public GameObject deathEffect;
     public GameObject collectibleEffect;
 
@@ -48,21 +54,28 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = startPos;
         newPos.x += delta * Mathf.Sin(Time.time * lrSpeed);
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
+        Debug.Log(Camera.current.WorldToViewportPoint(transform.position).y);
 
-        if(Input.GetMouseButton(0) && isMouseUp)
-        {
-            isBoosted = !isBoosted;
-            isMouseUp = false;
-        }
-        else if (!Input.GetMouseButton(0) && !isMouseUp) {
-            isMouseUp = true;
-        }
+        // Use toggle control scheme
+        //if (Input.GetMouseButton(0) && isMouseUp)
+        //{
+        //    Debug.Log("Pressed");
+        //    isBoosted = !isBoosted;
+        //    isMouseUp = false;
+        //}
+        //else if (!Input.GetMouseButton(0) && !isMouseUp)
+        //{
+        //    isMouseUp = true;
+        //}
+
+
         // else if(!Input.GetMouseButton(0))
         // {
         //     isBoosted = false;
         // }
 
-        if (isBoosted) {
+        if (isBoosted)
+        {
             rb.AddForce(transform.up * upSpeed);
         }
 
@@ -91,18 +104,22 @@ public class PlayerController : MonoBehaviour
         Destroy(Instantiate(collectibleEffect, other.gameObject.transform.position, Quaternion.identity), 0.5f);
         Destroy(other.gameObject);
         gameController.AddScore();
+
+        OnItemGetEvent();
     }
 
     void Death()
     {
         isDead = true;
+        OnDeath();
 
         StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().Shake());
 
         Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 0.7f);
         StopPlayer();
 
-        gameController.CallGameOver();
+        //gameController.CallGameOver();
+        gameController.Restart();
     }
 
     void StopPlayer()
@@ -118,9 +135,17 @@ public class PlayerController : MonoBehaviour
         Camera.main.backgroundColor = Color.HSVToRGB(hueValue, 0.6f, 0.8f);
 
         hueValue += 0.1f;
-        if(hueValue >= 1)
+        if (hueValue >= 1)
         {
             hueValue = 0;
+        }
+    }
+
+    public bool IsDead
+    {
+        get
+        {
+            return isDead;
         }
     }
 }

@@ -8,29 +8,51 @@ using Unity.MLAgents.Actuators;
 
 public class PlayerAgent : Agent
 {
-    public Rigidbody rb;
+    private Rigidbody rb;
+    private PlayerController playerController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    public void OnAgentItemGet()
+    {
+        SetReward(1.0f);
+    }
+
+    public void OnAgentDeath()
+    {
+        playerController.OnItemGetEvent -= OnAgentItemGet;
+        SetReward(-10f);
+        EndEpisode();
+    }
+
     public override void OnEpisodeBegin()
     {
-        base.OnEpisodeBegin();
-        Debug.Log("On Episode Begin");
+        playerController = GetComponent<PlayerController>();
+        playerController.OnItemGetEvent += OnAgentItemGet;
+        playerController.OnDeath += OnAgentDeath;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        Debug.Log("Collect Obs");
         sensor.AddObservation(rb.transform.position.x);        
-        sensor.AddObservation(rb.transform.position.z);
+        sensor.AddObservation(rb.transform.position.y);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        Debug.Log("On Action Received");
-        Debug.Log($"OnActionReceived: {actions.ContinuousActions[0]}");
+        if (actions.DiscreteActions[0] == 0)
+        {
+            playerController.isBoosted = false;
+        }
+        else if (actions.DiscreteActions[0] == 1)
+        {
+            playerController.isBoosted = true;
+        }
+
+        SetReward(-0.1f);
     }
+
 }

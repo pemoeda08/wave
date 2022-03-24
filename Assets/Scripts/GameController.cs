@@ -19,13 +19,15 @@ public class GameController : MonoBehaviour
         currentScore = 0;
         bestScoreText.text = PlayerPrefs.GetInt("BestScore", 0).ToString();
         SetScore();
+
+        startText.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            startText.gameObject.SetActive(false);
+            //startText.gameObject.SetActive(false);
         }
     }
 
