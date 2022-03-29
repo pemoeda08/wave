@@ -11,15 +11,15 @@ public class Resizer : MonoBehaviour
 
     Vector3 minScale;
 
-    IEnumerator Start()
-    {
-        minScale = transform.localScale;
-        while(repeat)
-        {
-            yield return RepeatResize(minScale, maxScale, duration);
-            yield return RepeatResize(maxScale, minScale, duration);
-        }
-    }
+    //IEnumerator Start()
+    //{
+    //    minScale = transform.localScale;
+    //    while(repeat)
+    //    {
+    //        yield return RepeatResize(minScale, maxScale, duration);
+    //        yield return RepeatResize(maxScale, minScale, duration);
+    //    }
+    //}
 
     public IEnumerator RepeatResize(Vector3 a, Vector3 b, float time)
     {

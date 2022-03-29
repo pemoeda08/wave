@@ -54,12 +54,10 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = startPos;
         newPos.x += delta * Mathf.Sin(Time.time * lrSpeed);
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
-        Debug.Log(Camera.current.WorldToViewportPoint(transform.position).y);
 
         // Use toggle control scheme
         //if (Input.GetMouseButton(0) && isMouseUp)
         //{
-        //    Debug.Log("Pressed");
         //    isBoosted = !isBoosted;
         //    isMouseUp = false;
         //}

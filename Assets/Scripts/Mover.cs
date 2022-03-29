@@ -16,17 +16,17 @@ public class Mover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!upDown)
-        {
-            Vector3 newPos = startPos;
-            newPos.x += delta * Mathf.Sin(Time.time * speed);
-            transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
-        }
-        else if(upDown)
-        {
-            Vector3 newPos = startPos;
-            newPos.y += delta * Mathf.Sin(Time.time * speed);
-            transform.position = new Vector3(transform.position.x, newPos.y, transform.position.z);
-        }
+        //if(!upDown)
+        //{
+        //    Vector3 newPos = startPos;
+        //    newPos.x += delta * Mathf.Sin(Time.time * speed);
+        //    transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
+        //}
+        //else if(upDown)
+        //{
+        //    Vector3 newPos = startPos;
+        //    newPos.y += delta * Mathf.Sin(Time.time * speed);
+        //    transform.position = new Vector3(transform.position.x, newPos.y, transform.position.z);
+        //}
     }
 }
