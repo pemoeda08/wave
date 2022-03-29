@@ -1724,7 +1724,7 @@ MonoBehaviour:
   player: {fileID: 745282179}
   obstaclesArray:
   - {fileID: 8878919449158724347, guid: cb21b2e512d1a90489dba910ae7e7350, type: 3}
-  - {fileID: 8832473522213534655, guid: e371d30fab84ef3498f095862c498f14, type: 3}
+  - {fileID: 7463426735050320528, guid: 7d59bb9f4ab4f9d439bf0484c8d41f1f, type: 3}
   - {fileID: 7463426735050320528, guid: 7d59bb9f4ab4f9d439bf0484c8d41f1f, type: 3}
   - {fileID: 5272528349334353845, guid: 5db2af56c07055943b012f385f5638ac, type: 3}
   - {fileID: 1586532180363278366, guid: aebba7f9352dd4842a2a2440039a33c6, type: 3}
