@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float lrSpeed = 2.5f;
     public float upSpeed = 2.5f;
     public float maxUpSpeed = 3f;
+
+    public float currentSineX = 0f;
+
     public bool isBoosted = false;
 
     public AudioClip itemSound;
@@ -52,7 +55,8 @@ public class PlayerController : MonoBehaviour
 
 
         Vector3 newPos = startPos;
-        newPos.x += delta * Mathf.Sin(Time.time * lrSpeed);
+        currentSineX = Mathf.Sin(Time.time * lrSpeed);
+        newPos.x += delta * currentSineX;
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
 
         // Use toggle control scheme

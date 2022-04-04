@@ -39,6 +39,8 @@ public class PlayerAgent : Agent
     {
         sensor.AddObservation(rb.transform.position.x);        
         sensor.AddObservation(rb.transform.position.y);
+
+        sensor.AddObservation(playerController.currentSineX);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
