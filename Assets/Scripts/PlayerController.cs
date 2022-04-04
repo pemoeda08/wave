@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float maxUpSpeed = 3f;
 
     public float currentSineX = 0f;
+    public float currentVelocityX = 0f;
 
     public bool isBoosted = false;
 
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = startPos;
         currentSineX = Mathf.Sin(Time.time * lrSpeed);
         newPos.x += delta * currentSineX;
+
+        currentVelocityX = Mathf.Abs(newPos.x - transform.position.x) / Time.deltaTime;
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
 
         // Use toggle control scheme

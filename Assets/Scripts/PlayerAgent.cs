@@ -40,7 +40,7 @@ public class PlayerAgent : Agent
         sensor.AddObservation(rb.transform.position.x);        
         sensor.AddObservation(rb.transform.position.y);
 
-        sensor.AddObservation(playerController.currentSineX);
+        sensor.AddObservation(playerController.currentVelocityX);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
