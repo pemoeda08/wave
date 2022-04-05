@@ -24,7 +24,7 @@ public class ObstacleController : MonoBehaviour
         int playerDistance = (int)(player.transform.position.y / (distanceToNext));
         // Debug.Log("playerDistance: " + playerDistance);
 
-        if(playerDistanceIndex != playerDistance)
+        if (playerDistanceIndex != playerDistance)
         {
             SpawnObstacle();
             playerDistanceIndex = playerDistance;

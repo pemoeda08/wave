@@ -10,6 +10,7 @@ public class PlayerAgent : Agent
 {
     private Rigidbody rb;
     private PlayerController playerController;
+    public bool useAgent;
 
     void Start()
     {
@@ -41,10 +42,13 @@ public class PlayerAgent : Agent
         sensor.AddObservation(rb.transform.position.y);
 
         sensor.AddObservation(playerController.currentVelocityX);
+        sensor.AddObservation(rb.velocity.y);
+        Debug.Log(playerController.currentVelocityX);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        if (!useAgent) return;
         if (actions.DiscreteActions[0] == 0)
         {
             playerController.isBoosted = false;
