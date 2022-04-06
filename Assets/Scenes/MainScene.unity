@@ -713,6 +713,8 @@ MonoBehaviour:
   lrSpeed: 2.5
   upSpeed: 12
   maxUpSpeed: 12
+  currentSineX: 0
+  currentVelocityX: 0
   isBoosted: 0
   itemSound: {fileID: 8300000, guid: 3c303259577fbd34aa7e197555bbbabb, type: 3}
   deathSound: {fileID: 8300000, guid: 577506bde0987064b89113ce8f6f7de8, type: 3}
@@ -786,7 +788,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_Children: []
+  m_Children:
+  - {fileID: 1423569236}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -941,7 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 2
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -1558,6 +1561,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1423569235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423569236}
+  - component: {fileID: 1423569237}
+  m_Layer: 0
+  m_Name: Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423569236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423569235}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 745282184}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1423569237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423569235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags: []
+  m_RaysPerDirection: 8
+  m_MaxRayDegrees: 90
+  m_SphereCastRadius: 0.5
+  m_RayLength: 20
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0
 --- !u!1 &1480068602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,9 +1783,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 745282179}
   obstaclesArray:
-  - {fileID: 8878919449158724347, guid: cb21b2e512d1a90489dba910ae7e7350, type: 3}
-  - {fileID: 7463426735050320528, guid: 7d59bb9f4ab4f9d439bf0484c8d41f1f, type: 3}
-  - {fileID: 7463426735050320528, guid: 7d59bb9f4ab4f9d439bf0484c8d41f1f, type: 3}
   - {fileID: 5272528349334353845, guid: 5db2af56c07055943b012f385f5638ac, type: 3}
   - {fileID: 1586532180363278366, guid: aebba7f9352dd4842a2a2440039a33c6, type: 3}
   - {fileID: 7662053546108575073, guid: 32a786448112e6a4a9d3a7d8f2102f21, type: 3}

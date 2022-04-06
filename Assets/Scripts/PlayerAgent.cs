@@ -24,7 +24,7 @@ public class PlayerAgent : Agent
     public void OnAgentDeath()
     {
         playerController.OnItemGetEvent -= OnAgentItemGet;
-        SetReward(-10f);
+        AddReward(-20f);
         EndEpisode();
     }
 
@@ -37,10 +37,11 @@ public class PlayerAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(rb.transform.position.x);        
+        sensor.AddObservation(rb.transform.position.x);
         sensor.AddObservation(rb.transform.position.y);
 
         sensor.AddObservation(playerController.currentVelocityX);
+        sensor.AddObservation(rb.velocity.y);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -54,7 +55,7 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        SetReward(-0.1f);
+        AddReward(rb.velocity.y / 30);
     }
 
 }
