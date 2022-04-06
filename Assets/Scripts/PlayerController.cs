@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         currentSineX = Mathf.Sin(Time.time * lrSpeed);
         newPos.x += delta * currentSineX;
 
-        currentVelocityX = Mathf.Abs(newPos.x - transform.position.x) / Time.deltaTime;
+        currentVelocityX = newPos.x - transform.position.x / Time.deltaTime;
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
 
         // Use toggle control scheme
