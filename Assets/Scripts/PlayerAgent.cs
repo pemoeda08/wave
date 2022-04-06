@@ -58,4 +58,9 @@ public class PlayerAgent : Agent
         SetReward(-0.1f);
     }
 
+    public void OnItemMissed()
+    {
+        SetReward(-0.5f);
+    }
+
 }
