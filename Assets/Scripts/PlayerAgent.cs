@@ -24,7 +24,7 @@ public class PlayerAgent : Agent
     public void OnAgentDeath()
     {
         playerController.OnItemGetEvent -= OnAgentItemGet;
-        AddReward(-20f);
+        AddReward(-10f);
         EndEpisode();
     }
 
@@ -37,9 +37,6 @@ public class PlayerAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(rb.transform.position.x);
-        sensor.AddObservation(rb.transform.position.y);
-
         sensor.AddObservation(playerController.currentVelocityX);
         sensor.AddObservation(rb.velocity.y);
     }
