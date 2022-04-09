@@ -38,7 +38,7 @@ public class PlayerAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(playerController.currentVelocityX);
-        sensor.AddObservation(rb.velocity.y);
+        sensor.AddObservation(playerController.rb.velocity.y);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -53,6 +53,11 @@ public class PlayerAgent : Agent
         }
 
         AddReward(rb.velocity.y / 30);
+    }
+
+    public void OnItemMissed()
+    {
+        SetReward(-0.5f);
     }
 
 }
