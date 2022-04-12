@@ -12,6 +12,10 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI bestScoreText;
     public TextMeshProUGUI startText;
 
+    private ObstacleController obstacleController;
+    private CameraController cameraController;
+    private PlayerController playerController;
+
     int currentScore;
 
     void Start()
@@ -21,14 +25,24 @@ public class GameController : MonoBehaviour
         SetScore();
 
         startText.gameObject.SetActive(false);
+
+        cameraController = Camera.main.GetComponent<CameraController>();
+
+        GameObject playerInstance = GameObject.Find("Player");
+        playerController = playerInstance.GetComponent<PlayerController>();
+        cameraController.player = playerInstance;
+
+        GameObject obstacleControllerInstance = GameObject.Find("Obstacle Controller");
+        obstacleController = obstacleControllerInstance.GetComponent<ObstacleController>();
+        obstacleController.player = playerInstance;
     }
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            //startText.gameObject.SetActive(false);
-        }
+        //if (Input.GetMouseButton(0))
+        //{
+        //    startText.gameObject.SetActive(false);
+        //}
     }
 
     public void CallGameOver()
@@ -45,7 +59,11 @@ public class GameController : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        obstacleController.ResetObstacles();
+        playerController.ResetState();
+        currentScore = 0;
+        SetScore();
     }
 
     public void AddScore()

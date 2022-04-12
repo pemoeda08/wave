@@ -10,10 +10,16 @@ public class PlayerAgent : Agent
 {
     private Rigidbody rb;
     private PlayerController playerController;
+    private GameController gameController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerController = GetComponent<PlayerController>();
+        playerController.OnItemGetEvent += OnAgentItemGet;
+        playerController.OnDeath += OnAgentDeath;
+
+        gameController = GameObject.Find("Game Controller").GetComponent<GameController>();
     }
 
     public void OnAgentItemGet()
@@ -23,16 +29,15 @@ public class PlayerAgent : Agent
 
     public void OnAgentDeath()
     {
-        playerController.OnItemGetEvent -= OnAgentItemGet;
+        //playerController.OnItemGetEvent -= OnAgentItemGet;
         AddReward(-10f);
         EndEpisode();
     }
 
     public override void OnEpisodeBegin()
     {
-        playerController = GetComponent<PlayerController>();
-        playerController.OnItemGetEvent += OnAgentItemGet;
-        playerController.OnDeath += OnAgentDeath;
+        //playerController.Reset();
+        gameController.Restart();
     }
 
     public override void CollectObservations(VectorSensor sensor)

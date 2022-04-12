@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         currentVelocityX = (newPos.x - transform.position.x) / Time.deltaTime;
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
 
-        // Use toggle control scheme
+        //Use toggle control scheme
         //if (Input.GetMouseButton(0) && isMouseUp)
         //{
         //    isBoosted = !isBoosted;
@@ -112,24 +112,32 @@ public class PlayerController : MonoBehaviour
         OnItemGetEvent();
     }
 
+    public void ResetState()
+    {
+        isDead = false;
+        isBoosted = false;
+        rb.velocity = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, -3, 0);
+        rb.isKinematic = false;
+    }
+
     void Death()
     {
         isDead = true;
-        OnDeath();
-
+        StopPlayer();
         StartCoroutine(Camera.main.gameObject.GetComponent<CameraShake>().Shake());
 
         Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 0.7f);
-        StopPlayer();
+
+        OnDeath();
 
         //gameController.CallGameOver();
-        gameController.Restart();
+        //gameController.Restart();
     }
 
     void StopPlayer()
     {
-        Destroy(this.GetComponent<SphereCollider>());
-
+        //Destroy(this.GetComponent<SphereCollider>());
         rb.velocity = new Vector3(0, 0, 0);
         rb.isKinematic = true;
     }

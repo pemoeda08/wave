@@ -11,9 +11,12 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 targetPos = player.transform.TransformPoint(new Vector3(0, yOffset, -10));
-        targetPos = new Vector3(0, targetPos.y, targetPos.z);
+        if (player != null)
+        {
+            Vector3 targetPos = player.transform.TransformPoint(new Vector3(0, yOffset, -10));
+            targetPos = new Vector3(0, targetPos.y, targetPos.z);
 
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
+            transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
+        }
     }
 }

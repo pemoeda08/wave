@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764bb9cd3178cab40be1b1332aec3e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 745282179}
+  player: {fileID: 0}
   yOffset: 10
 --- !u!20 &519420031
 Camera:
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b2144e37fe854419c5315346b6c9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 745282179}
+  player: {fileID: 0}
   obstaclesArray:
   - {fileID: 7662916419921816232, guid: 9e8aa1c0fac5d694e8035f7435be050e, type: 3}
 --- !u!4 &1551786954
