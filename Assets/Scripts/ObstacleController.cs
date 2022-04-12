@@ -14,6 +14,8 @@ public class ObstacleController : MonoBehaviour
     int obstacleIndex = 0;
     int distanceToNext = 30;
 
+    private static System.Random random = new System.Random();
+
     void Start()
     {
         obstacleCount = obstaclesArray.Length;
@@ -34,7 +36,7 @@ public class ObstacleController : MonoBehaviour
 
     public void SpawnObstacle()
     {
-        int randomInt = Random.Range(0, obstacleCount);
+        int randomInt = random.Next(0, obstacleCount);
         GameObject newObstacle = Instantiate(obstaclesArray[randomInt], new Vector3(0, obstacleIndex * distanceToNext), Quaternion.identity);
         newObstacle.transform.SetParent(transform);
         obstacleIndex++;
