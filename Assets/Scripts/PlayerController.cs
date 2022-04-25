@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         currentVelocityX = (newPos.x - transform.position.x) / Time.deltaTime;
         transform.position = new Vector3(newPos.x, transform.position.y, transform.position.z);
 
+        gameController.UpdateDistance();
         //Use toggle control scheme
         //if (Input.GetMouseButton(0) && isMouseUp)
         //{
@@ -158,6 +159,14 @@ public class PlayerController : MonoBehaviour
         get
         {
             return isDead;
+        }
+    }
+
+    public Vector2 DistanceFromStart
+    {
+        get
+        {
+            return transform.position - startPos;
         }
     }
 }
