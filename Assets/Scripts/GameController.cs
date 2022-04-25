@@ -11,12 +11,14 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI currentScoreText;
     public TextMeshProUGUI bestScoreText;
     public TextMeshProUGUI startText;
+    public TextMeshProUGUI distanceText;
 
     private ObstacleController obstacleController;
     private CameraController cameraController;
     private PlayerController playerController;
 
     int currentScore;
+    float currentDistance;
 
     void Start()
     {
@@ -63,7 +65,9 @@ public class GameController : MonoBehaviour
         obstacleController.ResetObstacles();
         playerController.ResetState();
         currentScore = 0;
+        currentDistance = 0;
         SetScore();
+        UpdateDistanceText();
     }
 
     public void AddScore()
@@ -80,5 +84,16 @@ public class GameController : MonoBehaviour
     void SetScore()
     {
         currentScoreText.text = currentScore.ToString();
+    }
+
+    public void UpdateDistance()
+    {
+        currentDistance = playerController.DistanceFromStart.y;
+        UpdateDistanceText();
+    }
+
+    void UpdateDistanceText()
+    {
+        distanceText.text = currentDistance.ToString("0.0");
     }
 }
