@@ -57,7 +57,7 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        AddReward(rb.velocity.y / 30);
+        AddReward(rb.velocity.y / 100);
     }
 
     public void OnItemMissed()
