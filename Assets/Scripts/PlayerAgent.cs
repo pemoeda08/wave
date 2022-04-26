@@ -18,6 +18,7 @@ public class PlayerAgent : Agent
         playerController = GetComponent<PlayerController>();
         playerController.OnItemGetEvent += OnAgentItemGet;
         playerController.OnDeath += OnAgentDeath;
+        playerController.OnCheckpointHit += OnCheckpointHit;
 
         gameController = GameObject.Find("Game Controller").GetComponent<GameController>();
     }
@@ -30,8 +31,13 @@ public class PlayerAgent : Agent
     public void OnAgentDeath()
     {
         //playerController.OnItemGetEvent -= OnAgentItemGet;
-        AddReward(-10f);
+        AddReward(-1f);
         EndEpisode();
+    }
+
+    public void OnCheckpointHit()
+    {
+        AddReward(1f);
     }
 
     public override void OnEpisodeBegin()
@@ -57,7 +63,9 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        AddReward(rb.velocity.y / 100);
+        //AddReward(playerController.rb.velocity.y / 500);
+
+        //AddReward(-0.1f);
     }
 
     public void OnItemMissed()

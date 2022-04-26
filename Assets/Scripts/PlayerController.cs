@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public delegate void DeathEvent();
     public event DeathEvent OnDeath;
 
+    public delegate void CheckpointEvent();
+    public event DeathEvent OnCheckpointHit;
+
     public GameObject deathEffect;
     public GameObject collectibleEffect;
 
@@ -99,6 +102,10 @@ public class PlayerController : MonoBehaviour
         {
             SoundManager.instance.PlaySingle(itemSound);
             GetItem(other);
+        }
+        else if (other.gameObject.tag == "Checkpoint")
+        {
+            OnCheckpointHit();
         }
     }
 

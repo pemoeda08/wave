@@ -549,7 +549,7 @@ RectTransform:
   - {fileID: 1121493824}
   - {fileID: 1213878407}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -653,7 +653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -786,13 +786,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745282179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0.01, y: -4.23, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 1423569236}
   - {fileID: 239564819}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &745282185
 Rigidbody:
@@ -954,7 +954,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 60fb696f1da4e664b9bd76fe19f3f882, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: f68ad3e0025966841bada0ffdf460b50, type: 3}
   m_InferenceDevice: 3
   m_BehaviorType: 0
   m_BehaviorName: PlayerAgent
@@ -1453,7 +1453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1392991709
 MonoBehaviour:
@@ -1613,7 +1613,7 @@ MonoBehaviour:
   m_RaysPerDirection: 15
   m_MaxRayDegrees: 90
   m_SphereCastRadius: 0.43
-  m_RayLength: 15
+  m_RayLength: 10
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1788,10 +1788,10 @@ MonoBehaviour:
   player: {fileID: 0}
   obstaclesArray:
   - {fileID: 7662916419921816232, guid: 9e8aa1c0fac5d694e8035f7435be050e, type: 3}
-  - {fileID: 8878919449158724347, guid: cb21b2e512d1a90489dba910ae7e7350, type: 3}
+  - {fileID: 1586532180363278366, guid: aebba7f9352dd4842a2a2440039a33c6, type: 3}
   - {fileID: 7662053546108575073, guid: 32a786448112e6a4a9d3a7d8f2102f21, type: 3}
   - {fileID: 6239314928243380637, guid: a8c492be7a17ab44d93609a00204acbd, type: 3}
-  - {fileID: 1586532180363278366, guid: aebba7f9352dd4842a2a2440039a33c6, type: 3}
+  - {fileID: 8878919449158724347, guid: cb21b2e512d1a90489dba910ae7e7350, type: 3}
   - {fileID: 5867583483655232277, guid: bd099cc2474d8e045ba2402b820a8a62, type: 3}
 --- !u!4 &1551786954
 Transform:
