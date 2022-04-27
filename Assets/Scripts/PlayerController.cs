@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        startPos = transform.position;
+        startPos = new Vector3(0, -3, 0);
 
         gameController = GameObject.Find("Game Controller").GetComponent<GameController>();
     }

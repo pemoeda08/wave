@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI bestScoreText;
     public TextMeshProUGUI startText;
     public TextMeshProUGUI distanceText;
+    public TextMeshProUGUI bestDistanceText;
 
     private ObstacleController obstacleController;
     private CameraController cameraController;
@@ -24,6 +25,7 @@ public class GameController : MonoBehaviour
     {
         currentScore = 0;
         bestScoreText.text = PlayerPrefs.GetInt("BestScore", 0).ToString();
+        bestDistanceText.text = PlayerPrefs.GetFloat("BestDistance", 0).ToString("0.0");
         SetScore();
 
         startText.gameObject.SetActive(false);
@@ -89,6 +91,11 @@ public class GameController : MonoBehaviour
     public void UpdateDistance()
     {
         currentDistance = playerController.DistanceFromStart.y;
+        if (currentDistance > PlayerPrefs.GetFloat("BestDistance", 0))
+        {
+            PlayerPrefs.SetFloat("BestDistance", currentDistance);
+            bestDistanceText.text = currentDistance.ToString("0.0");
+        }
         UpdateDistanceText();
     }
 
