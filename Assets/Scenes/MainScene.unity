@@ -1925,11 +1925,6 @@ MonoBehaviour:
   player: {fileID: 0}
   obstaclesArray:
   - {fileID: 7662916419921816232, guid: 9e8aa1c0fac5d694e8035f7435be050e, type: 3}
-  - {fileID: 8878919449158724347, guid: cb21b2e512d1a90489dba910ae7e7350, type: 3}
-  - {fileID: 7662053546108575073, guid: 32a786448112e6a4a9d3a7d8f2102f21, type: 3}
-  - {fileID: 6239314928243380637, guid: a8c492be7a17ab44d93609a00204acbd, type: 3}
-  - {fileID: 1586532180363278366, guid: aebba7f9352dd4842a2a2440039a33c6, type: 3}
-  - {fileID: 5867583483655232277, guid: bd099cc2474d8e045ba2402b820a8a62, type: 3}
 --- !u!4 &1551786954
 Transform:
   m_ObjectHideFlags: 0
