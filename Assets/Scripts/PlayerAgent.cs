@@ -37,7 +37,7 @@ public class PlayerAgent : Agent
 
     public void OnCheckpointHit()
     {
-        AddReward(1f);
+        //AddReward(1f);
     }
 
     public override void OnEpisodeBegin()
@@ -63,7 +63,7 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        AddReward(playerController.rb.velocity.y / 150);
+        AddReward(playerController.rb.velocity.y / 100);
 
         //AddReward(-0.1f);
     }
