@@ -31,13 +31,13 @@ public class PlayerAgent : Agent
     public void OnAgentDeath()
     {
         //playerController.OnItemGetEvent -= OnAgentItemGet;
-        AddReward(-1f);
+        AddReward(-10f);
         EndEpisode();
     }
 
     public void OnCheckpointHit()
     {
-        AddReward(1f);
+        //AddReward(1f);
     }
 
     public override void OnEpisodeBegin()
@@ -63,7 +63,7 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        //AddReward(playerController.rb.velocity.y / 500);
+        AddReward(playerController.rb.velocity.y / 100);
 
         //AddReward(-0.1f);
     }
