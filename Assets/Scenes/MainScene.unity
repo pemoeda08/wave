@@ -954,7 +954,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: f68ad3e0025966841bada0ffdf460b50, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 184a12a8d4ba69a479bc8b0cd25fb365, type: 3}
   m_InferenceDevice: 3
   m_BehaviorType: 0
   m_BehaviorName: PlayerAgent
@@ -1925,7 +1925,6 @@ MonoBehaviour:
   player: {fileID: 0}
   obstaclesArray:
   - {fileID: 7662916419921816232, guid: 9e8aa1c0fac5d694e8035f7435be050e, type: 3}
-
 --- !u!4 &1551786954
 Transform:
   m_ObjectHideFlags: 0
