@@ -25,13 +25,15 @@ public class PlayerAgent : Agent
 
     public void OnAgentItemGet()
     {
-        SetReward(1.0f);
+        // BEST FOR PPO: 10f
+        AddReward(15f);
     }
 
     public void OnAgentDeath()
     {
         //playerController.OnItemGetEvent -= OnAgentItemGet;
-        AddReward(-10f);
+        // BEST FOR PPO: -5f
+        AddReward(-3f);
         EndEpisode();
     }
 
@@ -49,6 +51,7 @@ public class PlayerAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(playerController.currentVelocityX);
+        sensor.AddObservation(playerController.transform.position.x);
         sensor.AddObservation(playerController.rb.velocity.y);
     }
 
@@ -63,14 +66,14 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        AddReward(playerController.rb.velocity.y / 100);
+        AddReward(-0.1f);
 
         //AddReward(-0.1f);
     }
 
     public void OnItemMissed()
     {
-        SetReward(-0.5f);
+        //SetReward(-0.5f);
     }
 
 }
