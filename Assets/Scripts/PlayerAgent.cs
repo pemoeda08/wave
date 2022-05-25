@@ -66,14 +66,14 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        AddReward(-0.1f);
+        AddReward(-0.05f);
 
         //AddReward(-0.1f);
     }
 
     public void OnItemMissed()
     {
-        //SetReward(-0.5f);
+        SetReward(-1.5f);
     }
 
 }
