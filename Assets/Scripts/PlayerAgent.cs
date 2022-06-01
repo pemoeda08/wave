@@ -8,6 +8,9 @@ using Unity.MLAgents.Actuators;
 
 public class PlayerAgent : Agent
 {
+    public delegate void DiscreteActionEvent(int action);
+    public event DiscreteActionEvent OnDiscreteActionReceived;
+
     private Rigidbody rb;
     private PlayerController playerController;
     private GameController gameController;
@@ -64,7 +67,7 @@ public class PlayerAgent : Agent
         }
 
         AddReward(playerController.rb.velocity.y / 100);
-
+        OnDiscreteActionReceived(actions.DiscreteActions[0]);
         //AddReward(-0.1f);
     }
 
