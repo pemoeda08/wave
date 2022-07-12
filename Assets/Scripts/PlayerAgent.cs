@@ -50,8 +50,9 @@ public class PlayerAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(playerController.currentVelocityX);
-        //sensor.AddObservation(playerController.rb.position.x);
+        float speedX = playerController.currentVelocityX;
+        sensor.AddObservation(speedX < 0 ? 0 : 1);
+        sensor.AddObservation(Mathf.Abs(playerController.currentVelocityX));
         sensor.AddObservation(playerController.rb.velocity.y);
     }
 
