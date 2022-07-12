@@ -21,15 +21,9 @@ public class CollectibleController : MonoBehaviour
         Vector2 itemScreenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         if (itemScreenPosition.y < 0)
         {
-            OnItemMiss();
             Destroy(gameObject);
         }
     }
 
-    public void OnItemMiss()
-    {
-        agent.OnItemMissed();
-        Destroy(this.gameObject);
-    }
 
 }

@@ -18,33 +18,23 @@ public class PlayerAgent : Agent
         playerController = GetComponent<PlayerController>();
         playerController.OnItemGetEvent += OnAgentItemGet;
         playerController.OnDeath += OnAgentDeath;
-        playerController.OnCheckpointHit += OnCheckpointHit;
 
         gameController = GameObject.Find("Game Controller").GetComponent<GameController>();
     }
 
     public void OnAgentItemGet()
     {
-        // BEST FOR PPO: 10f
         AddReward(5f);
     }
 
     public void OnAgentDeath()
     {
-        //playerController.OnItemGetEvent -= OnAgentItemGet;
-        // BEST FOR PPO: -5f
         AddReward(-5f);
         EndEpisode();
     }
 
-    public void OnCheckpointHit()
-    {
-        //AddReward(1f);
-    }
-
     public override void OnEpisodeBegin()
     {
-        //playerController.Reset();
         gameController.Restart();
     }
 
@@ -68,13 +58,6 @@ public class PlayerAgent : Agent
         }
 
         AddReward(-0.01f);
-
-        //AddReward(-0.1f);
-    }
-
-    public void OnItemMissed()
-    {
-        //SetReward(-1.5f);
     }
 
 }
