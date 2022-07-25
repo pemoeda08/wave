@@ -25,11 +25,18 @@ public class PlayerAgent : Agent
     public void OnAgentItemGet()
     {
         AddReward(5f);
+
+        gameController.currentDistance += 15;
+        gameController.UpdateDistanceText();
     }
 
     public void OnAgentDeath()
     {
         AddReward(-5f);
+
+        gameController.currentDistance += -3f;
+        gameController.UpdateDistanceText();
+
         EndEpisode();
     }
 

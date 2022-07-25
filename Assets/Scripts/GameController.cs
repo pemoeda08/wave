@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     private PlayerController playerController;
 
     int currentScore;
-    float currentDistance;
+    public float currentDistance;
 
     void Start()
     {
@@ -39,6 +39,16 @@ public class GameController : MonoBehaviour
         GameObject obstacleControllerInstance = GameObject.Find("Obstacle Controller");
         obstacleController = obstacleControllerInstance.GetComponent<ObstacleController>();
         obstacleController.player = playerInstance;
+
+        currentScoreText.gameObject.SetActive(false);
+        bestScoreText.gameObject.SetActive(false);
+        bestDistanceText.gameObject.SetActive(false);
+        var obj1 = GameObject.Find("\"BEST\"");
+        if (obj1 != null) obj1.SetActive(false);
+        var obj2 = GameObject.Find("distanceText");
+        if (obj2 != null) obj2.SetActive(false);
+        var obj3 = GameObject.Find("Best Distance Text");
+        if (obj3 != null) obj3.SetActive(false);
     }
 
     void Update()
@@ -69,7 +79,7 @@ public class GameController : MonoBehaviour
         currentScore = 0;
         currentDistance = 0;
         SetScore();
-        UpdateDistanceText();
+        //UpdateDistanceText();
     }
 
     public void AddScore()
@@ -99,7 +109,7 @@ public class GameController : MonoBehaviour
         UpdateDistanceText();
     }
 
-    void UpdateDistanceText()
+    public void UpdateDistanceText()
     {
         distanceText.text = currentDistance.ToString("0.0");
     }
