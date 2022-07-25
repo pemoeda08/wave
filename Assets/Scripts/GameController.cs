@@ -9,23 +9,22 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
 
     public TextMeshProUGUI currentScoreText;
-    public TextMeshProUGUI bestScoreText;
+    public TextMeshProUGUI cRewardText;
     public TextMeshProUGUI startText;
     public TextMeshProUGUI distanceText;
-    public TextMeshProUGUI bestDistanceText;
 
     private ObstacleController obstacleController;
     private CameraController cameraController;
     private PlayerController playerController;
 
     int currentScore;
-    public float currentDistance;
+    float currentDistance;
+    public float currentReward;
 
     void Start()
     {
         currentScore = 0;
-        bestScoreText.text = PlayerPrefs.GetInt("BestScore", 0).ToString();
-        bestDistanceText.text = PlayerPrefs.GetFloat("BestDistance", 0).ToString("0.0");
+        cRewardText.text = "0";
         SetScore();
 
         startText.gameObject.SetActive(false);
@@ -40,15 +39,6 @@ public class GameController : MonoBehaviour
         obstacleController = obstacleControllerInstance.GetComponent<ObstacleController>();
         obstacleController.player = playerInstance;
 
-        currentScoreText.gameObject.SetActive(false);
-        bestScoreText.gameObject.SetActive(false);
-        bestDistanceText.gameObject.SetActive(false);
-        var obj1 = GameObject.Find("\"BEST\"");
-        if (obj1 != null) obj1.SetActive(false);
-        var obj2 = GameObject.Find("distanceText");
-        if (obj2 != null) obj2.SetActive(false);
-        var obj3 = GameObject.Find("Best Distance Text");
-        if (obj3 != null) obj3.SetActive(false);
     }
 
     void Update()
@@ -85,11 +75,6 @@ public class GameController : MonoBehaviour
     public void AddScore()
     {
         currentScore++;
-        if(currentScore > PlayerPrefs.GetInt("BestScore", 0))
-        {
-            PlayerPrefs.SetInt("BestScore", currentScore);
-            bestScoreText.text = currentScore.ToString();
-        }
         SetScore();
     }
 
@@ -101,12 +86,12 @@ public class GameController : MonoBehaviour
     public void UpdateDistance()
     {
         currentDistance = playerController.DistanceFromStart.y;
-        if (currentDistance > PlayerPrefs.GetFloat("BestDistance", 0))
-        {
-            PlayerPrefs.SetFloat("BestDistance", currentDistance);
-            bestDistanceText.text = currentDistance.ToString("0.0");
-        }
         UpdateDistanceText();
+    }
+
+    public void UpdateRewardText()
+    {
+        cRewardText.text = currentReward.ToString("0.00");
     }
 
     public void UpdateDistanceText()

@@ -27,8 +27,8 @@ public class PlayerAgent : Agent
         const float reward = 5f;
         AddReward(reward);
 
-        gameController.currentDistance += reward;
-        gameController.UpdateDistanceText();
+        gameController.currentReward += reward;
+        gameController.UpdateRewardText();
     }
 
     public void OnAgentDeath()
@@ -36,8 +36,8 @@ public class PlayerAgent : Agent
         const float reward = -5f;
         AddReward(reward);
 
-        gameController.currentDistance += reward;
-        gameController.UpdateDistanceText();
+        gameController.currentReward += reward;
+        gameController.UpdateRewardText();
 
         EndEpisode();
     }
@@ -68,8 +68,8 @@ public class PlayerAgent : Agent
 
         const float reward = -0.01f;
         AddReward(reward);
-        gameController.currentDistance += reward;
-        gameController.UpdateDistanceText();
+        gameController.currentReward += reward;
+        gameController.UpdateRewardText();
     }
 
 }
