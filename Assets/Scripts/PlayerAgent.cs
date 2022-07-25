@@ -24,17 +24,19 @@ public class PlayerAgent : Agent
 
     public void OnAgentItemGet()
     {
-        AddReward(5f);
+        const float reward = 5f;
+        AddReward(reward);
 
-        gameController.currentDistance += 15;
+        gameController.currentDistance += reward;
         gameController.UpdateDistanceText();
     }
 
     public void OnAgentDeath()
     {
-        AddReward(-5f);
+        const float reward = -5f;
+        AddReward(reward);
 
-        gameController.currentDistance += -3f;
+        gameController.currentDistance += reward;
         gameController.UpdateDistanceText();
 
         EndEpisode();
@@ -64,7 +66,10 @@ public class PlayerAgent : Agent
             playerController.isBoosted = true;
         }
 
-        AddReward(-0.01f);
+        const float reward = -0.01f;
+        AddReward(reward);
+        gameController.currentDistance += reward;
+        gameController.UpdateDistanceText();
     }
 
 }
