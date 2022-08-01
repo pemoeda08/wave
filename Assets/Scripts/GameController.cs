@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
         playerController.ResetState();
         currentScore = 0;
         currentDistance = 0;
+        currentReward = 0;
         SetScore();
         //UpdateDistanceText();
     }
